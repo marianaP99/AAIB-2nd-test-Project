@@ -30,11 +30,10 @@ try:
             )
         )
         st.altair_chart(chart, use_container_width=True)
-except URLError as e:
+except:
     st.error(
         """
         **This demo requires internet access.**
         Connection error: %s
     """
-        % e.reason
     )
