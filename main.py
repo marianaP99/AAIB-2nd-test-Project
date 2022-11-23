@@ -31,7 +31,7 @@ try:
         )
         st.altair_chart(chart, use_container_width=True)
 except:
-    st.error(
+    print(
         """
         **This demo requires internet access.**
         Connection error: %s
