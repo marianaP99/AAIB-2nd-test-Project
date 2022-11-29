@@ -2,13 +2,13 @@ import streamlit as st
 import pandas as pd
 
 """ 
-# Hello World!! 
+# hang in there :') 
 """
-import matplotlib.pyplot as plt
+import pandas as pd
 import numpy as np
 
-arr = np.random.normal(1, 1, size=100)
-fig, ax = plt.subplots()
-ax.hist(arr, bins=20)
+chart_data = pd.DataFrame(
+    np.random.randn(20, 3),
+    columns=['a', 'b', 'c'])
 
-st.pyplot(fig)
+st.line_chart(chart_data)
