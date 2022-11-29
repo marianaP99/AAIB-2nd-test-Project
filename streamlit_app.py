@@ -7,8 +7,8 @@ import pandas as pd
 import pandas as pd
 import numpy as np
 
-chart_data = pd.DataFrame(
-    np.random.randn(20, 3),
-    columns=['a', 'b', 'c'])
+test = pd.read_csv("sonograme2.csv", names = ['Tempo','Onda'])
+
+chart_data =test
 
 st.line_chart(chart_data)
