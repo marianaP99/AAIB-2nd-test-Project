@@ -6,4 +6,4 @@ import matplotlis.pyplot as plt
 """ 
 # Hello World!! 
 """
-plt.plot([1,2,3,7])
+st.pyplot([1,2,3,7])
