@@ -9,4 +9,4 @@ import numpy as np
 
 test = pd.read_csv("sonograme2.csv", names = ['Tempo','Onda'])
 
-st.line_chart(x=test['Tempo],y=test['Onda'])
+st.line_chart(x=test['Tempo'],y=test['Onda'])
