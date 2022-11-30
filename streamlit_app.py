@@ -4,13 +4,12 @@ import pandas as pd
 import numpy as np
 import time
 
-my_bar = st.progress(0)
-
 st.write("hang in there :') or not :(")
 
 button = st.button('Iniciar Aquisição')
 
-if button :    
+if button :  
+    my_bar = st.progress(0)
     for percent_complete in range(30):
         time.sleep(0.1)
         my_bar.progress(percent_complete + 1)
