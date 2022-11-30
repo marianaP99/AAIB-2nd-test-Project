@@ -4,3 +4,4 @@ tsfel
 pandas
 numpy
 streamlit
+python-time
