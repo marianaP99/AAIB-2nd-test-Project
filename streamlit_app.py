@@ -12,7 +12,7 @@ if button :
     my_bar = st.progress(0)
     t0 = time.time()
     while time.time()-t0 < 3:
-        my_bar.progress((time.time()-t0)/3)
+        my_bar.progress(100 * (time.time()-t0)/3)
 
 sound_df = pd.read_csv("sonograme.csv", names = ['Tempo','Onda'])
 
