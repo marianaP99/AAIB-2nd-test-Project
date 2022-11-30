@@ -5,7 +5,10 @@ import numpy as np
 
 st.write("hang in there :') or not :(")
 
-st.button('Iniciar Aquisição')
+button = st.button('Iniciar Aquisição')
+
+if button:
+    st.write('start aquisition')
 
 sound_df = pd.read_csv("sonograme.csv", names = ['Tempo','Onda'])
 
