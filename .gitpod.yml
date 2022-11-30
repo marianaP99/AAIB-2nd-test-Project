@@ -4,7 +4,7 @@
 
 tasks:
   - command: python main.py
-  - init: pip install paho-mqtt
+  - init: pip install -r requirements.txt
 
 
 

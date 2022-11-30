@@ -8,5 +8,5 @@ def on_connect(client, userdata, flags, rc):
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
-client.connect("test.mosquitto.org", 1883, 60)
+client.connect("test.mosquitto.org", 1883, 600)
 client.loop_forever()
