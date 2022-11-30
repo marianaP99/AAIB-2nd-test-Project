@@ -3,3 +3,4 @@ sounddevice
 tsfel
 pandas
 numpy
+streamlit

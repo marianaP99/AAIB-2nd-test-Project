@@ -17,7 +17,11 @@ def record():
     cfg = tsfel.get_features_by_domain()
     s_tsfel = tsfel.time_series_features_extractor(cfg, sound, fs=fs)
     
-    return myrecording, t, sound, s_tsfel
+    sonogram = '\n'.join([','.join([str(t[n]),str(sound[n])]) for n in range(len(t))])
+    features = ','.join(s_tsfel.columns) + '\n' + ','.join([str(n) for n in s_tsfel.loc[0] ])
+
+    message = sonogram + '||' + features 
+    return message
 
 def save_file(t, sound, tsfel):
     sound_f = open("sonograme.csv", "w")

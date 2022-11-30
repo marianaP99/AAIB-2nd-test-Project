@@ -1,11 +1,11 @@
-""" 
-# hang in there :') or not :( 
-"""
-
 import streamlit as st
 import pandas as pd
 import pandas as pd
 import numpy as np
+
+st.write("hang in there :') or not :(")
+
+st.button('Iniciar Aquisição')
 
 sound_df = pd.read_csv("sonograme.csv", names = ['Tempo','Onda'])
 
