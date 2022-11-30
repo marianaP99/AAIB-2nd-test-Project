@@ -2,13 +2,18 @@ import streamlit as st
 import pandas as pd
 import pandas as pd
 import numpy as np
+import time
+
+my_bar = st.progress(0)
 
 st.write("hang in there :') or not :(")
 
 button = st.button('Iniciar Aquisição')
 
-if button :
-    st.write('start aquisition')
+if button :    
+    for percent_complete in range(30):
+        time.sleep(0.1)
+        my_bar.progress(percent_complete + 1)
 
 sound_df = pd.read_csv("sonograme.csv", names = ['Tempo','Onda'])
 
