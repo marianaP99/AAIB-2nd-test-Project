@@ -34,10 +34,10 @@ st.write("hang in there :') or not :(")
 button = st.button('Iniciar Aquisição')
 
 if button : 
-    client.loop_start()
+    client.loop_forever()
     mqtt_pub()
     mqtt_sub()
-    client.loop_stop()
+    
 
     my_bar = st.progress(0)
     for percent_complete in range(100):
