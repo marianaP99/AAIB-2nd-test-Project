@@ -21,7 +21,7 @@ client.connect("test.mosquitto.org", 1883)
 
 def mqtt_sub():
     ready = True
-    sound = client.subscribe("AAIB/MP")
+    message = client.subscribe("AAIB/MP")
 
 def mqtt_pub():
     message = 'start'
@@ -30,10 +30,6 @@ def mqtt_pub():
 client.loop_start()    
 
 st.write("hang in there :') or not :(")
-
-start = 0
-def get_button():
-    return 1
 
 button = st.button('Iniciar Aquisição')
 
@@ -48,7 +44,7 @@ if button :
         my_bar.progress(percent_complete)
 
     try:
-        sonogram, features = gp.sound.split('||')
+        sonogram, features = message.split('||')
         # sonogram = '\n'.join([','.join([str(t[n]),str(sound[n])]) for n in range(len(t))])
         sound = [[t_sound.split(',')] for t_sound in sonogram.split('\n')]
         sound_df = pd.DataFrame(dound, columns=['Tempo','Onda'])
