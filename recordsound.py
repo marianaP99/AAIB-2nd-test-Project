@@ -23,7 +23,7 @@ def record():
     message = sonogram + '||' + features 
     return message
 
-def save_file(t, sound, tsfel):
+def save_file(message):
     sound_f = open("sonograme.csv", "w")
     sound_f.write('\n'.join([','.join([str(t[n]),str(sound[n])]) for n in range(len(t))]))
 

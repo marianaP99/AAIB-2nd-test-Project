@@ -21,7 +21,7 @@ def mqtt_pub():
     message = rs.record
     client.publish("AAIB/MP", message)
 
-loop_start()
+client.loop_start()
 
 if button == 'START':
     mqtt_pub()

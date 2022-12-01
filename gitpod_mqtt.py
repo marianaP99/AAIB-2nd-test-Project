@@ -1,5 +1,4 @@
 import paho.mqtt.client as mqtt
-import recordsound as rs
 import streamlit_app as myapp
 
 def on_connect(client, userdata, flags, rc):
@@ -15,16 +14,19 @@ client.on_message = on_message
 client.connect("test.mosquitto.org", 1883)
 button = myapp.button
 
+ready = False
+
 def mqtt_sub():
-    message = client.subscribe("AAIB/MP")
+    ready = True
+    sound = client.subscribe("AAIB/MP")
 
 def mqtt_pub():
     message = 'start'
     client.publish("AAIB/MP", message)
 
-loop_start()
+client.loop_start()
 
 if button:
     mqtt_pub()
-    mqtt_pub()
-    rs.save_file(message)
+    mqtt_sub()
+    
