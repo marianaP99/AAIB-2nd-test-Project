@@ -29,14 +29,15 @@ def mqtt_pub():
 
     
 
-st.write("hang in there :')")
+st.write("hang in there :') v100000")
 
 button = st.button('Iniciar Aquisição')
 
 if button : 
-    client.loop_forever()
+    client.loop_start()
     mqtt_pub()
     mqtt_sub()
+    client.loop_stop()
     
 
     my_bar = st.progress(0)
