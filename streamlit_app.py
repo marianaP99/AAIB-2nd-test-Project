@@ -27,16 +27,17 @@ def mqtt_pub():
     print(message)
     client.publish("AAIB/MP", message)
 
-client.loop_forever()    
+   
 
 st.write("hang in there :') v100000")
 
 button = st.button('Iniciar Aquisição')
 
 if button : 
-    
+    client.loop_start() 
     mqtt_pub()
     mqtt_sub()
+    client.loop_stop()
 
     my_bar = st.progress(0)
     for percent_complete in range(100):
