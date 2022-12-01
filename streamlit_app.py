@@ -11,7 +11,7 @@ button = st.button('Iniciar Aquisição')
 if button :  
     my_bar = st.progress(0)
     for percent_complete in range(100):
-        time.sleep(0.03)
+        time.sleep(0.05)
         my_bar.progress(percent_complete)
 
 sound_df = pd.read_csv("sonograme.csv", names = ['Tempo','Onda'])
