@@ -27,8 +27,6 @@ def mqtt_pub():
     print(message)
     client.publish("AAIB/MP", message)
 
-   
-
 st.write("hang in there :') v100000")
 
 button = st.button('Iniciar Aquisição')
@@ -44,6 +42,7 @@ if button :
         time.sleep(0.05)
         my_bar.progress(percent_complete)
 
+    print(sonogram)
     try:
         sonogram, features = message.split('||')
         # sonogram = '\n'.join([','.join([str(t[n]),str(sound[n])]) for n in range(len(t))])
