@@ -6,13 +6,15 @@ def on_connect(client, userdata, flags, rc):
      +str(rc)+"client1_id ")
      client.connected_flag=True
 
+def on_message(client, userdata, msg):
+    print(msg.topic+" "+str(msg.payload))
+
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 client.connect("test.mosquitto.org", 1883, 600)
 
-def mqtt_sub():      
-    client.loop_forever()
+client.loop_forever()
 
 def mqtt_pub():
     message = rs.record
