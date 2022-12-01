@@ -26,8 +26,7 @@ def mqtt_pub():
     message = 'start'
     client.publish("AAIB/MP", message)
 
-from streamlit_app import get_button
-button = myapp.get_button()
+button = streamlit_app.get_button
 
 client.loop_start()
 
