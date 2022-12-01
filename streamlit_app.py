@@ -44,11 +44,13 @@ if button :
         time.sleep(0.05)
         my_bar.progress(percent_complete)
 
-    sonogram, features = message.split('||')
-    # sonogram = '\n'.join([','.join([str(t[n]),str(sound[n])]) for n in range(len(t))])
-    sound = [[t_sound.split(',')] for t_sound in sonogram.split('\n')]
-    sound_df = pd.DataFrame(dound, columns=['Tempo','Onda'])
-    st.line_chart(sound_df['Onda'], width = max(sound_df['Tempo']))
-
+    try:
+        sonogram, features = message.split('||')
+        # sonogram = '\n'.join([','.join([str(t[n]),str(sound[n])]) for n in range(len(t))])
+        sound = [[t_sound.split(',')] for t_sound in sonogram.split('\n')]
+        sound_df = pd.DataFrame(dound, columns=['Tempo','Onda'])
+        st.line_chart(sound_df['Onda'], width = max(sound_df['Tempo']))
+    except:
+        print(':(')
 # sound_df = pd.read_csv("features.csv")
 # st.bar_chart(sound_df)
