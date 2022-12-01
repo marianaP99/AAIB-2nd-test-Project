@@ -7,8 +7,11 @@ import gitpod_mqtt as gp
 
 st.write("hang in there :') or not :(")
 
+def mqtt_button():
+    return button
+
 button = st.button('Iniciar Aquisição')
-ready = gp.ready
+ready = gp.mqtt_ready()
 
 if button :  
     my_bar = st.progress(0)

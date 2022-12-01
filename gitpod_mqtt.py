@@ -12,9 +12,12 @@ client.on_connect = on_connect
 client.on_message = on_message
 
 client.connect("test.mosquitto.org", 1883)
-button = myapp.button
+button = myapp.mqtt_button()
 
 ready = False
+
+def mqtt_ready():
+    return ready
 
 def mqtt_sub():
     ready = True
