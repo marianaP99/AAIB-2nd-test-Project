@@ -14,7 +14,6 @@ client.on_connect = on_connect
 client.on_message = on_message
 
 client.connect("test.mosquitto.org", 1883)
-button = myapp.mqtt_button
 
 def mqtt_ready():
     return ready
@@ -26,6 +25,8 @@ def mqtt_sub():
 def mqtt_pub():
     message = 'start'
     client.publish("AAIB/MP", message)
+
+button = myapp.mqtt_button()
 
 client.loop_start()
 

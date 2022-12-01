@@ -7,12 +7,10 @@ import gitpod_mqtt as gp
 
 st.write("hang in there :') or not :(")
 
-button = False
 def mqtt_button():
     return button
 
 button = st.button('Iniciar Aquisição')
-ready = gp.mqtt_ready
 
 if button :  
     my_bar = st.progress(0)
@@ -20,7 +18,6 @@ if button :
         time.sleep(0.05)
         my_bar.progress(percent_complete)
 
-if ready:
     [sonogram, features] = gp.sound.split('||')
     # sonogram = '\n'.join([','.join([str(t[n]),str(sound[n])]) for n in range(len(t))])
     sound = [[t_sound.split(',')] for t_sound in sonogram.split('\n')]
