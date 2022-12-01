@@ -11,9 +11,14 @@ client.on_connect = on_connect
 client.on_message = on_message
 client.connect("test.mosquitto.org", 1883, 600)
 
-def mqtt_pub():      
+def mqtt_sub():      
     client.loop_forever()
 
 def mqtt_pub():
     message = rs.record
     client.publish("AAIB/test", message)
+
+button = mqtt_sub()
+
+if button:
+    mqtt_pub()
