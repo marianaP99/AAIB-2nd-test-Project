@@ -42,7 +42,7 @@ if button :
         time.sleep(0.05)
         my_bar.progress(percent_complete)
 
-    st.write(sonogram)
+    st.write(message)
     try:
         sonogram, features = message.split('||')
         # sonogram = '\n'.join([','.join([str(t[n]),str(sound[n])]) for n in range(len(t))])
