@@ -29,7 +29,7 @@ def mqtt_pub():
 
     
 
-st.write("hang in there :') or not :(")
+st.write("hang in there :')")
 
 button = st.button('Iniciar Aquisição')
 
