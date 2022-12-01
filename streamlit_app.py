@@ -27,16 +27,17 @@ def mqtt_pub():
     message = 'start'
     client.publish("AAIB/MP", message)
 
-client.loop_start()    
+    
 
 st.write("hang in there :') or not :(")
 
 button = st.button('Iniciar Aquisição')
 
 if button : 
-
+    client.loop_start()
     mqtt_pub()
     mqtt_sub()
+    client.loop_stop()
 
     my_bar = st.progress(0)
     for percent_complete in range(100):
@@ -51,7 +52,6 @@ if button :
         st.line_chart(sound_df['Onda'], width = max(sound_df['Tempo']))
 
     except:
-        st.write('waiting for data')
 
 
 # sound_df = pd.read_csv("features.csv")
