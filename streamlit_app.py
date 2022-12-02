@@ -42,24 +42,12 @@ def mqtt_pub(ready):
 
 st.write("hang in there :')")
 
-button = st.button("Iniciar Aquisição")
+button = st.button("Iniciar Aquisição", on_click = mqtt_pub("start"))
 st.write(button)
 
-if button :  
-    mqtt_pub("start")
-
-try:
-    sound = json.loads(message)
-    st.write(sound)
-    # sonogram = sound[0]
-    # features = sound[1]
-    # sound_df = pd.DataFrame(sonogram, columns=['Tempo','Onda'])
-    # st.line_chart(sound_df['Onda'], width = max(sound_df['Tempo']))
-    #st.write(features)
-
-except:
+while button:
     client.loop_start()
-    client.subscribe("AAIB/MP/SOUND")
+    client.subscribe("AAIB/MP/SOUND") 
 
 client.loop_stop()
 
