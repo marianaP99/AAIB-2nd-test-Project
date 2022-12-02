@@ -8,13 +8,9 @@ import json
 @st.cache
 def on_connect(client, userdata, flags, rc):
     print("Connected")
-
-# def on_publish(client, userdata, mid):
-#     st.write('waiting for orter to start')   
    
 client = mqtt.Client()
 client.on_connect = on_connect
-# client.on_publish = on_publish
 
 client.connect("broker.hivemq.com", 1883)
 
@@ -25,6 +21,6 @@ st.title("Projeto Substituto 2º Teste")
 button = st.button("Iniciar Aquisição", on_click = mqtt_pub("start"))
 
 sonogram = pd.read_csv("sonogram.csv", names = ['Tempo','Onda'])
-st.line_chart(sonogram)
+st.line_chart(sonogram['Onda'])
 
     
