@@ -22,10 +22,11 @@ def on_connect(client, userdata, flags, rc):
     print("Connected")
 
 def on_message(client, userdata, msg):
-    client.loop_stop()
     st.write("receiving data")
     message = msg.payload.decode("utf-8")
+    st.write(str(message))
     graphs(message)
+    client.loop_stop()
 
 def on_publish(client, userdata, mid):
     st.write('waiting for orter to start')
