@@ -9,13 +9,12 @@ import json
 def on_connect(client, userdata, flags, rc):
     print("Connected")
 
-
-def on_publish(client, userdata, mid):
-    st.write('waiting for orter to start')   
+# def on_publish(client, userdata, mid):
+#     st.write('waiting for orter to start')   
    
 client = mqtt.Client()
 client.on_connect = on_connect
-client.on_publish = on_publish
+# client.on_publish = on_publish
 
 client.connect("broker.hivemq.com", 1883)
 
