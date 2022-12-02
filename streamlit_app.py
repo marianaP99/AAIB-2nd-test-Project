@@ -6,6 +6,7 @@ import time
 import paho.mqtt.client as mqtt
 import json
 
+@st.cache
 def graphs(message):
     try:
         sound = json.loads(message)
