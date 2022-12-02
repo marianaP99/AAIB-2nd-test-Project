@@ -16,5 +16,5 @@ client.on_publish = on_publish
 
 client.connect("broker.hivemq.com", 1883)
 
-client.loop_forever()
+client.loop_start()
 client.publish("AAIB/MP/READY", payload = 'start')
