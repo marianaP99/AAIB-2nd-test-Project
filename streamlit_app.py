@@ -45,7 +45,6 @@ client.connect("broker.hivemq.com", 1883)
 
 def mqtt_pub(ready):
     st.write(ready)
-    print(ready)
     client.publish("AAIB/MP/READY", payload = ready)
 
 st.write("hang in there :')")
@@ -59,7 +58,7 @@ if button :
     mqtt_pub("start")
     start = True
     
-
+st.write(start)
 while start:
     client.loop_start()
     client.subscribe("AAIB/MP/SOUND")
