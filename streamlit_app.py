@@ -28,9 +28,9 @@ client.loop_start()
 # def mqtt_sub():
 #     message = client.subscribe("AAIB/MP/SOUND")
 
-# def mqtt_pub(ready):
-#     print(ready)
-#     client.publish("AAIB/MP/READY", payload = ready)
+def mqtt_pub(ready):
+    print(ready)
+    client.publish("AAIB/MP/READY", payload = ready)
 
 st.write("hang in there :') v99")
 
@@ -40,7 +40,7 @@ st.write(button)
 if button :  
     client.publish("AAIB/MP/READY", payload = 'start')
     mqtt_pub('start')
-    
+
     message = client.subscribe("AAIB/MP/SOUND")
     st.write(message)
 
