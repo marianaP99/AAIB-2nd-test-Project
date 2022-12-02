@@ -13,7 +13,7 @@ def on_message(client, userdata, msg):
     print('message')
     message = str(msg.payload.decode("utf-8"))
     sonogram = json.loads(message)
-    sound_df = pd.DataFrame(sonogram, columns=['Tempo','Onda'])
+    sound_df = pd.DataFrame(sonogram)
     sound_df.to_csv("sonogram.csv")
 
 client = mqtt.Client()

@@ -24,5 +24,7 @@ def mqtt_pub(ready):
 st.title("Projeto Substituto 2º Teste")
 button = st.button("Iniciar Aquisição", on_click = mqtt_pub("start"))
 
-sonogram = pd.read_csv("sonogram.csv")
+sonogram = pd.read_csv("sonogram.csv", names = ['Tempo','Onda'])
+st.line_chart(sonogram['Tempo'],sonogram['Onda'])
+
     
