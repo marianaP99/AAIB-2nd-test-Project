@@ -45,17 +45,10 @@ st.write("hang in there :')")
 button = st.button("Iniciar Aquisição")
 st.write(button)
 
-start = False
-graph = False
-
-
 if button :  
     mqtt_pub("start")
-    start = True
-    
-st.write(start)
-
-while start:
+  
+while button:
     client.loop_start()
     client.subscribe("AAIB/MP/SOUND")
 client.loop_stop()
