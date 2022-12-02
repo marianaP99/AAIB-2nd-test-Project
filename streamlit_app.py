@@ -42,7 +42,7 @@ if button :
     mqtt_pub('start')
 
     message = client.subscribe("AAIB/MP/SOUND")
-    st.write(message)
+    st.write(message[0])
 
     # my_bar = st.progress(0)
     # for percent_complete in range(100):
