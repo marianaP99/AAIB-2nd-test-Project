@@ -27,8 +27,7 @@ def on_message(client, userdata, msg):
 
 def on_publish(client, userdata, mid):
     st.write('waiting for orter to start')
-    client.loop_start()
-    client.subscribe("AAIB/MP/SOUND")
+    
 
 client = mqtt.Client()
 client.on_connect = on_connect
@@ -48,6 +47,20 @@ st.write(button)
 
 if button :  
     mqtt_pub("start")
+
+try:
+    sound = json.loads(message)
+    st.write(sound)
+    # sonogram = sound[0]
+    # features = sound[1]
+    # sound_df = pd.DataFrame(sonogram, columns=['Tempo','Onda'])
+    # st.line_chart(sound_df['Onda'], width = max(sound_df['Tempo']))
+    #st.write(features)
+
+except:
+    client.loop_start()
+    client.subscribe("AAIB/MP/SOUND")
+
 client.loop_stop()
 
 # my_bar = st.progress(0)
