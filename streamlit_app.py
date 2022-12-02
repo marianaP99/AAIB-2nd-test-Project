@@ -39,12 +39,12 @@ button = st.button('Iniciar Aquisição')
 st.write(button)
 
 if button :  
-    client.loop_start()
-    client.publish("AAIB/MP/READY", payload = 'start')
     mqtt_pub('start')
 
+while button:
+    client.loop_start()
     message = client.subscribe("AAIB/MP/SOUND")
-    st.write(message[0])
+    st.write()
 
     # my_bar = st.progress(0)
     # for percent_complete in range(100):
