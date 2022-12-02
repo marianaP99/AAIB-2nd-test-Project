@@ -22,6 +22,7 @@ def on_connect(client, userdata, flags, rc):
     print("Connected")
 
 def on_message(client, userdata, msg):
+    client.loop_stop()
     st.write("receiving data")
     message = msg.payload.decode("utf-8")
     graphs(message)
@@ -61,7 +62,7 @@ while start:
     client.loop_start()
     client.subscribe("AAIB/MP/SOUND")
 
-client.loop_stop()
+
 
 # my_bar = st.progress(0)
 # for percent_complete in range(100):
