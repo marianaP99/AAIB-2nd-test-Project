@@ -15,8 +15,7 @@ def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
 
 def on_publish(client, userdata, mid):
-    print('sent' + ready)
-    st.write('sent'+ready)
+    st.write(ready)
 
 client = mqtt.Client()
 client.on_connect = on_connect
@@ -35,11 +34,11 @@ def mqtt_pub(ready):
 
 st.write("hang in there :') v99")
 
-button = st.button('Iniciar Aquisição')
+button = st.button("Iniciar Aquisição")
 st.write(button)
 
 if button :  
-    mqtt_pub('start')
+    mqtt_pub("start")
 
 while button:
     client.loop_start()
@@ -60,7 +59,7 @@ while button:
         #st.write(features)
 
     except:
-        print(':(')
+        print(":)")
     
 # sound_df = pd.read_csv("features.csv")
 # st.bar_chart(sound_df)
