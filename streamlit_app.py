@@ -53,20 +53,23 @@ st.write("hang in there :')")
 button = st.button("Iniciar Aquisição")
 st.write(button)
 
+start = False
+
 if button :  
     mqtt_pub("start")
+    start = True
+    
 
-while button:
+while start:
     client.loop_start()
     client.subscribe("AAIB/MP/SOUND")
 
 client.loop_stop()
+
 # my_bar = st.progress(0)
 # for percent_complete in range(100):
 #     time.sleep(0.05)
 #     my_bar.progress(percent_complete)
 
-
-        
 # sound_df = pd.read_csv("features.csv")
 # st.bar_chart(sound_df)
