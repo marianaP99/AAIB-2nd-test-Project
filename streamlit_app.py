@@ -49,6 +49,6 @@ button = st.button("Iniciar Aquisição", on_click = mqtt_pub("start"))
 
 while not received:
     client.loop_start()
-    st.writ('0')
+    st.write('0')
     client.subscribe("AAIB/MP")
 client.loop_stop()
