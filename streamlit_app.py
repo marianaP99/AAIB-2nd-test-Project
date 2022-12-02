@@ -40,9 +40,6 @@ client.on_subscribe = on_subscribe
 
 client.connect("broker.hivemq.com", 1883)
 
-# def mqtt_sub():
-#     message = client.subscribe("AAIB/MP/SOUND")
-
 def mqtt_pub(ready):
     st.write(ready)
     client.publish("AAIB/MP/READY", payload = ready)
@@ -60,6 +57,7 @@ if button :
     
 st.write(start)
 while start:
+    st.write('j')
     client.loop_start()
     client.subscribe("AAIB/MP/SOUND")
 
