@@ -38,7 +38,7 @@ def mqtt_pub(ready):
     print(ready)
     client.publish("AAIB/MP/READY", payload = ready)
 
-st.write("hang in there :') v99")
+st.write("hang in there :')")
 
 button = st.button("Iniciar Aquisição")
 st.write(button)
