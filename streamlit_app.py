@@ -24,9 +24,8 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     st.write("receiving data")
     message = msg.payload.decode("utf-8")
-    st.write(str(message))
-    graphs(message)
-    client.loop_stop()
+    graph = True
+
 
 def on_publish(client, userdata, mid):
     st.write('waiting for orter to start')
@@ -52,16 +51,26 @@ button = st.button("Iniciar Aquisição")
 st.write(button)
 
 start = False
+graph = False
+
 
 if button :  
     mqtt_pub("start")
     start = True
     
 st.write(start)
+
+try:
+    st.write(str(message))
+    graphs(message)
+except:
+    st.write('something is missing')
+
 while start:
-    st.write('j')
     client.loop_start()
     client.subscribe("AAIB/MP/SOUND")
+    
+    
 
 
 
