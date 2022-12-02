@@ -48,6 +48,7 @@ st.write(button)
 if button :  
     mqtt_pub("start")
     client.loop_start()
+    print(button)
 
 client.subscribe("AAIB/MP/SOUND")
 
