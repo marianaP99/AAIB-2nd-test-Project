@@ -6,6 +6,8 @@ import time
 import paho.mqtt.client as mqtt
 import json
 
+received = False
+
 @st.cache
 def graphs(message):
     try:
@@ -25,10 +27,16 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     st.write("receiving data")
     message = msg.payload.decode("utf-8")
+    received = True
+    
 
 def on_publish(client, userdata, mid):
     st.write('waiting for orter to start')
-    
+    while not received:
+        client.loop_start()
+        client.subscribe("AAIB/MP")
+    client.loop_stop()
+   
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
@@ -43,20 +51,3 @@ def mqtt_pub(ready):
 st.write("hang in there :')  dvnkllvnwkl")
 
 button = st.button("Iniciar Aquisição", on_click = mqtt_pub("start"))
-
-#st.write(button)
-
-while not on_message:
-    # st.write('subi')
-    client.loop_start()
-    client.subscribe("AAIB/MP") 
-
-client.loop_stop()
-
-# my_bar = st.progress(0)
-# for percent_complete in range(100):
-#     time.sleep(0.05)
-#     my_bar.progress(percent_complete)
-
-# sound_df = pd.read_csv("features.csv")
-# st.bar_chart(sound_df)
