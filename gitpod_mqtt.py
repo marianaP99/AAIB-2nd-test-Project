@@ -1,5 +1,4 @@
 import paho.mqtt.client as mqtt
-import streamlit_app as myapp
 
 ready = False
 
