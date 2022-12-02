@@ -36,6 +36,7 @@ client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 client.on_publish = on_publish
+client.on_subscribe = on_subscribe
 
 client.connect("broker.hivemq.com", 1883)
 
