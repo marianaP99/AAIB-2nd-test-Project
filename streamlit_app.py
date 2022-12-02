@@ -9,7 +9,7 @@ import json
 ready = 'waiting for orter to start'
 
 def on_connect(client, userdata, flags, rc):
-    print("Connected flags"+str(flags)+"result code " +str(rc)+"client1_id ")
+    print("Connected")
 
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
@@ -25,12 +25,12 @@ client.on_publish = on_publish
 client.connect("broker.hivemq.com", 1883)
 client.loop_start()
 
-def mqtt_sub():
-    message = client.subscribe("AAIB/MP/SOUND")
+# def mqtt_sub():
+#     message = client.subscribe("AAIB/MP/SOUND")
 
-def mqtt_pub(ready):
-    print(ready)
-    client.publish("AAIB/MP/READY", payload = ready)
+# def mqtt_pub(ready):
+#     print(ready)
+#     client.publish("AAIB/MP/READY", payload = ready)
 
 st.write("hang in there :') v99")
 
@@ -40,6 +40,8 @@ st.write(button)
 if button :  
     client.publish("AAIB/MP/READY", payload = 'start')
     mqtt_pub('start')
+    
+    message = client.subscribe("AAIB/MP/SOUND")
     st.write(message)
 
     # my_bar = st.progress(0)
