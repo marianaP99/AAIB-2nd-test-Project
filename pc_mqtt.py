@@ -15,13 +15,13 @@ client.connect("test.mosquitto.org", 1883)
 
 def mqtt_sub():
     print("Ready to start aquisition")
-    button = client.subscribe("AAIB/MP")
+    button = client.subscribe("AAIB/MP/READY")
 
 def mqtt_pub():
     message = rs.record
-    client.publish("AAIB/MP", message)
+    client.publish("AAIB/MP/SOUND", message)
 
 client.loop_start()
 
-if button == 'START':
+if button == 'start':
     mqtt_pub()

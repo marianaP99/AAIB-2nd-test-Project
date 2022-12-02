@@ -4,50 +4,57 @@ import pandas as pd
 import numpy as np
 import time
 import paho.mqtt.client as mqtt
+import json
 
 ready = False
 
 def on_connect(client, userdata, flags, rc):
-     print("Connected flags"+str(flags)+"result code " +str(rc)+"client1_id ")
+    print("Connected flags"+str(flags)+"result code " +str(rc)+"client1_id ")
 
 def on_message(client, userdata, msg):
-     print(msg.topic+" "+str(msg.payload))
+    print(msg.topic+" "+str(msg.payload))
+
+def on_publish(message):
+    print('sent' + message)
 
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
+client.on_publish = on_publish
 
 client.connect("broker.hivemq.com", 1883)
+client.loop_start()
 
-# def mqtt_sub():
-#     message = client.subscribe("AAIB/MP")
+def mqtt_sub():
+    message = client.subscribe("AAIB/MP/SOUND")
 
-# def mqtt_pub():
-#     message = 'start'
-#     print(message)
-#     client.publish("AAIB/MP", message)
+def mqtt_pub(ready):
+    print(ready)
+    client.publish("AAIB/MP/READY", payload = ready)
 
-st.write("hang in there :') v6")
+st.write("hang in there :') v99")
 
 button = st.button('Iniciar Aquisição')
 st.write(button)
-if button : 
-    client.loop_start() 
-    client.publish("AAIB/MP", 'start')
-    message = client.subscribe("AAIB/MP")
- 
-    my_bar = st.progress(0)
-    for percent_complete in range(100):
-        time.sleep(0.05)
-        my_bar.progress(percent_complete)
 
+if button :  
+    st.session_state.client.publish("AAIB/MP/READY", payload = 'start')
+    mqtt_pub('start')
     st.write(message)
+
+    # my_bar = st.progress(0)
+    # for percent_complete in range(100):
+    #     time.sleep(0.05)
+    #     my_bar.progress(percent_complete)
+
     try:
-        sonogram, features = message.split('||')
-        # sonogram = '\n'.join([','.join([str(t[n]),str(sound[n])]) for n in range(len(t))])
-        sound = [[t_sound.split(',')] for t_sound in sonogram.split('\n')]
-        sound_df = pd.DataFrame(dound, columns=['Tempo','Onda'])
+        sound = json.loads(message)
+        sonogram = sound[0]
+        features = sound[1]
+        sound_df = pd.DataFrame(sonogram, columns=['Tempo','Onda'])
         st.line_chart(sound_df['Onda'], width = max(sound_df['Tempo']))
+        #st.write(features)
+
     except:
         print(':(')
     
