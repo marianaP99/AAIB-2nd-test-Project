@@ -1,19 +1,23 @@
 import paho.mqtt.client as mqtt
-
-ready = False
+import json
 
 def on_connect(client, userdata, flags, rc):
-     print("Connected flags"+str(flags)+"result code " +str(rc)+"client1_id ")
+    print("Connected")
 
 def on_message(client, userdata, msg):
-     print(msg.topic+" "+str(msg.payload))
+    print(msg.payload)
+
+def on_publish(client, userdata, mid):
+    print('sent' + 'ready')
 
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
+client.on_publish = on_publish
 
 client.connect("broker.hivemq.com", 1883)
 
-sound = client.subscribe("AAIB/MP")
-print(sound)
+client.loop_forever()
 
+client.publish("AAIB/MP/READY", payload = 'start')
+client.subscribe("AAIB/MP/SOUND")
