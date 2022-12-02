@@ -16,6 +16,7 @@ def on_message(client, userdata, msg):
 
 def on_publish(client, userdata, mid):
     print('sent' + ready)
+    st.write('sent'+ready)
 
 client = mqtt.Client()
 client.on_connect = on_connect
@@ -29,6 +30,7 @@ client.loop_start()
 #     message = client.subscribe("AAIB/MP/SOUND")
 
 def mqtt_pub(ready):
+    st.write(ready)
     print(ready)
     client.publish("AAIB/MP/READY", payload = ready)
 
