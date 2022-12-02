@@ -18,19 +18,7 @@ client.connect("test.mosquitto.org", 1883)
 def mqtt_ready():
     return ready
 
-def mqtt_sub():
-    ready = True
-    sound = client.subscribe("AAIB/MP")
-
-def mqtt_pub():
-    message = 'start'
-    client.publish("AAIB/MP", message)
-
-button = streamlit_app.get_button
-
 client.loop_start()
 
-if button:
-    mqtt_pub()
-    mqtt_sub()
-    
+sound = client.subscribe("AAIB/MP")
+print(sound)
