@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import pandas as pd
 import numpy as np
 import time
 import paho.mqtt.client as mqtt
@@ -24,17 +23,17 @@ def graphs(message):
 def on_connect(client, userdata, flags, rc):
     print("Connected")
 
-def on_message(client, userdata, msg):
-    st.write("receiving data")
-    message = msg.payload.decode("utf-8")
-    received = True
+# def on_message(client, userdata, msg):
+#     st.write("receiving data")
+#     message = msg.payload.decode("utf-8")
+#     received = True
 
 def on_publish(client, userdata, mid):
     st.write('waiting for orter to start')   
    
 client = mqtt.Client()
 client.on_connect = on_connect
-client.on_message = on_message
+# client.on_message = on_message
 client.on_publish = on_publish
 
 client.connect("broker.hivemq.com", 1883)
@@ -46,7 +45,7 @@ def mqtt_pub(ready):
 st.write("hang in there :')  dvnkllvnwkl")
 button = st.button("Iniciar Aquisição", on_click = mqtt_pub("start"))
     
-while not received:
-    client.loop_start()
-    client.subscribe("AAIB/MP")
-client.loop_stop()
+# while not received:
+#     client.loop_start()
+#     client.subscribe("AAIB/MP")
+# client.loop_stop()
