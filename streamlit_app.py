@@ -6,6 +6,18 @@ import time
 import paho.mqtt.client as mqtt
 import json
 
+def graphs():
+    try:
+        sound = json.loads(message)
+        sonogram = sound[0]
+        features = sound[1]
+        sound_df = pd.DataFrame(sonogram, columns=['Tempo','Onda'])
+        st.line_chart(sound_df['Onda'], width = max(sound_df['Tempo']))
+        #st.write(features)
+
+    except:
+        print("ups! something went worg :(")
+
 def on_connect(client, userdata, flags, rc):
     print("Connected")
 
@@ -48,22 +60,13 @@ while button:
     client.loop_start()
     message = client.subscribe("AAIB/MP/SOUND")
 
+client.loop_stop()
 # my_bar = st.progress(0)
 # for percent_complete in range(100):
 #     time.sleep(0.05)
 #     my_bar.progress(percent_complete)
 
-def graphs():
-    try:
-        sound = json.loads(message)
-        sonogram = sound[0]
-        features = sound[1]
-        sound_df = pd.DataFrame(sonogram, columns=['Tempo','Onda'])
-        st.line_chart(sound_df['Onda'], width = max(sound_df['Tempo']))
-        #st.write(features)
 
-    except:
-        print("ups! something went worg :(")
         
 # sound_df = pd.read_csv("features.csv")
 # st.bar_chart(sound_df)
