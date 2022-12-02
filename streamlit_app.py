@@ -14,13 +14,15 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     message = msg.payload.decode("utf-8")
     print(msg.topic+" "+str(message))
+    graphs()
 
 def on_publish(client, userdata, mid):
     st.write(ready)
 
-def on_subscribe(client, userdata, mid, granted_qos):
-    st.write('found some data!!')
-    
+# def on_subscribe(client, userdata, mid, granted_qos):
+#     st.write('subscribed to topix')
+#     graphs()
+
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
@@ -53,16 +55,17 @@ while button:
 #     time.sleep(0.05)
 #     my_bar.progress(percent_complete)
 
-try:
-    sound = json.loads(message)
-    sonogram = sound[0]
-    features = sound[1]
-    sound_df = pd.DataFrame(sonogram, columns=['Tempo','Onda'])
-    st.line_chart(sound_df['Onda'], width = max(sound_df['Tempo']))
-    #st.write(features)
+def graphs():
+    try:
+        sound = json.loads(message)
+        sonogram = sound[0]
+        features = sound[1]
+        sound_df = pd.DataFrame(sonogram, columns=['Tempo','Onda'])
+        st.line_chart(sound_df['Onda'], width = max(sound_df['Tempo']))
+        #st.write(features)
 
-except:
-    print(":)")
-    
+    except:
+        print("ups! something went worg :(")
+        
 # sound_df = pd.read_csv("features.csv")
 # st.bar_chart(sound_df)
