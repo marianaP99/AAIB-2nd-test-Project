@@ -60,16 +60,16 @@ if button :
     
 st.write(start)
 
-try:
-    st.write(str(message))
-    graphs(message)
-except:
-    st.write('something is missing')
+
 
 while start:
     client.loop_start()
     client.subscribe("AAIB/MP/SOUND")
-    
+    try:
+        st.write(str(message))
+        graphs(message)
+    except:
+        st.write('something is missing')    
     
 
 
