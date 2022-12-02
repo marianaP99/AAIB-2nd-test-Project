@@ -47,10 +47,13 @@ st.write(button)
 
 if button :  
     mqtt_pub("start")
+
+while not button:   
     client.loop_start()
+    client.subscribe("AAIB/MP/SOUND")
     print(button)
 
-client.subscribe("AAIB/MP/SOUND")
+
 
 
 
