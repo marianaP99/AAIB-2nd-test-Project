@@ -32,7 +32,7 @@ st.write("hang in there :') v1")
 button = st.button('Iniciar Aquisição')
 
 if button : 
-    client.loop_start() 
+    client.loop_forever() 
     mqtt_pub()
     mqtt_sub()
     
@@ -52,6 +52,5 @@ if button :
     except:
         print(':(')
     
-    client.loop_stop()
 # sound_df = pd.read_csv("features.csv")
 # st.bar_chart(sound_df)
