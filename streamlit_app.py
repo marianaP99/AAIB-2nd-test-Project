@@ -24,7 +24,7 @@ client.on_message = on_message
 client.on_publish = on_publish
 
 client.connect("broker.hivemq.com", 1883)
-client.loop_start()
+client.loop_forever()
 
 # def mqtt_sub():
 #     message = client.subscribe("AAIB/MP/SOUND")
