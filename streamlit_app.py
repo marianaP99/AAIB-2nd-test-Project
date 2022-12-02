@@ -42,7 +42,7 @@ def mqtt_pub(ready):
 st.write("hang in there :')")
 
 button = st.button("Iniciar Aquisição", on_click = mqtt_pub("start"))
-button = st.button("Parar Aquisição", on_click = mqtt_pub("stop"))
+button2 = st.button("Parar Aquisição", on_click = mqtt_pub("stop"))
 
 #st.write(button)
 
