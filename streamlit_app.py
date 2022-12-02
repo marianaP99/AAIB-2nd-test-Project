@@ -14,7 +14,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
 
-def on_publish():
+def on_publish(client, userdata, mid):
     print('sent' + ready)
 
 client = mqtt.Client()
