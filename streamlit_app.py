@@ -6,8 +6,6 @@ import time
 import paho.mqtt.client as mqtt
 import json
 
-ready = 'waiting for orter to start'
-
 def on_connect(client, userdata, flags, rc):
     print("Connected")
 
@@ -17,7 +15,7 @@ def on_message(client, userdata, msg):
     graphs()
 
 def on_publish(client, userdata, mid):
-    st.write(ready)
+    st.write('waiting for orter to start')
 
 # def on_subscribe(client, userdata, mid, granted_qos):
 #     st.write('subscribed to topix')
