@@ -45,7 +45,7 @@ def mqtt_pub(ready):
 
 st.write("hang in there :')  dvnkllvnwkl")
 
-button = st.button("Iniciar Aquisição", on_click = mqtt_pub("start"))
+st.button("Iniciar Aquisição", on_click = mqtt_pub("start"))
 
 while not received:
     client.loop_start()
