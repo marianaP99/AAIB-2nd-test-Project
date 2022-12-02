@@ -48,14 +48,10 @@ st.write(button)
 if button :  
     mqtt_pub("start")
 
-while not button:   
+while button:   
     client.loop_start()
     client.subscribe("AAIB/MP/SOUND")
     print(button)
-
-
-
-
 
 # my_bar = st.progress(0)
 # for percent_complete in range(100):
