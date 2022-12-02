@@ -24,7 +24,7 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     st.write("receiving data")
     message = msg.payload.decode("utf-8")
-    client.loop_stop()
+    
 
 def on_publish(client, userdata, mid):
     st.write('waiting for orter to start')
@@ -52,6 +52,7 @@ while button:
     client.loop_start()
     client.subscribe("AAIB/MP/SOUND")
     print(button)
+client.loop_stop()
 
 # my_bar = st.progress(0)
 # for percent_complete in range(100):
