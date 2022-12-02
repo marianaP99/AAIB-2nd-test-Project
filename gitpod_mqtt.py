@@ -14,9 +14,6 @@ client.on_message = on_message
 
 client.connect("broker.hivemq.com", 1883)
 
-def mqtt_ready():
-    return ready
-
 client.loop_forever()
 
 sound = client.subscribe("AAIB/MP")
