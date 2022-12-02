@@ -6,7 +6,7 @@ import time
 import paho.mqtt.client as mqtt
 import json
 
-ready = False
+ready = 'waiting for orter to start'
 
 def on_connect(client, userdata, flags, rc):
     print("Connected flags"+str(flags)+"result code " +str(rc)+"client1_id ")
