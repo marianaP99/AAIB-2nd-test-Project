@@ -27,12 +27,12 @@ def mqtt_pub():
     print(message)
     client.publish("AAIB/MP", message)
 
-st.write("hang in there :') v1")
+st.write("hang in there :') v6")
 
 button = st.button('Iniciar Aquisição')
-
+st.write(button)
 if button : 
-    client.loop_forever() 
+    client.loop_start() 
     mqtt_pub()
     mqtt_sub()
     
