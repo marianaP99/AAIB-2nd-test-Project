@@ -22,8 +22,8 @@ def on_connect(client, userdata, flags, rc):
     print("Connected")
 
 def on_message(client, userdata, msg):
-    message = msg.payload.decode("utf-8")
     st.write("receiving data")
+    message = msg.payload.decode("utf-8")
     graphs()
 
 def on_publish(client, userdata, mid):
