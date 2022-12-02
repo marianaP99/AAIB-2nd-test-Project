@@ -19,13 +19,13 @@ client.on_message = on_message
 
 client.connect("broker.hivemq.com", 1883)
 
-def mqtt_sub():
-    message = client.subscribe("AAIB/MP")
+# def mqtt_sub():
+#     message = client.subscribe("AAIB/MP")
 
-def mqtt_pub():
-    message = 'start'
-    print(message)
-    client.publish("AAIB/MP", message)
+# def mqtt_pub():
+#     message = 'start'
+#     print(message)
+#     client.publish("AAIB/MP", message)
 
 st.write("hang in there :') v6")
 
