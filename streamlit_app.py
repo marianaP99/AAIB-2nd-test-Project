@@ -29,9 +29,8 @@ def on_message(client, userdata, msg):
 def on_publish(client, userdata, mid):
     st.write('waiting for orter to start')
 
-# def on_subscribe(client, userdata, mid, granted_qos):
-#     st.write('subscribed to topix')
-#     graphs()
+def on_subscribe(client, userdata, mid, granted_qos):
+     st.write('subscribed')
 
 client = mqtt.Client()
 client.on_connect = on_connect
