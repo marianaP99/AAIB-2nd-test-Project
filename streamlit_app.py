@@ -56,6 +56,7 @@ if button :
     mqtt_pub("start")
 
 while button:
+    st.write('hey')
     client.loop_start()
     message = client.subscribe("AAIB/MP/SOUND")
 
