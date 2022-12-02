@@ -26,18 +26,13 @@ def on_message(client, userdata, msg):
     message = msg.payload.decode("utf-8")
     graph = True
 
-
 def on_publish(client, userdata, mid):
     st.write('waiting for orter to start')
-
-def on_subscribe(client, userdata, mid, granted_qos):
-    st.write('subscribed')
 
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 client.on_publish = on_publish
-client.on_subscribe = on_subscribe
 
 client.connect("broker.hivemq.com", 1883)
 
@@ -60,18 +55,10 @@ if button :
     
 st.write(start)
 
-
-
 while start:
     client.loop_start()
     client.subscribe("AAIB/MP/SOUND")
-    try:
-        st.write(str(message))
-        graphs(message)
-    except:
-        st.write('something is missing')    
-    
-
+client.loop_stop()
 
 
 # my_bar = st.progress(0)
