@@ -1,6 +1,8 @@
 import paho.mqtt.client as mqtt
 import recordsound as rs
 
+button = '-'
+
 def on_connect(client, userdata, flags, rc):
      print("Connected")
 
@@ -23,5 +25,6 @@ client.connect("test.mosquitto.org", 1883)
 
 client.loop_start()
 
+mqtt_sub()
 if button == 'start':
     mqtt_pub

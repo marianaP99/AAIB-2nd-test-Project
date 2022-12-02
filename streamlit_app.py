@@ -38,7 +38,7 @@ button = st.button('Iniciar Aquisição')
 st.write(button)
 
 if button :  
-    st.session_state.client.publish("AAIB/MP/READY", payload = 'start')
+    client.publish("AAIB/MP/READY", payload = 'start')
     mqtt_pub('start')
     st.write(message)
 
