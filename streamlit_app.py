@@ -28,14 +28,9 @@ def on_message(client, userdata, msg):
     st.write("receiving data")
     message = msg.payload.decode("utf-8")
     received = True
-    
 
 def on_publish(client, userdata, mid):
-    st.write('waiting for orter to start')
-    while not received:
-        client.loop_start()
-        client.subscribe("AAIB/MP")
-    client.loop_stop()
+    st.write('waiting for orter to start')   
    
 client = mqtt.Client()
 client.on_connect = on_connect
@@ -51,3 +46,8 @@ def mqtt_pub(ready):
 st.write("hang in there :')  dvnkllvnwkl")
 
 button = st.button("Iniciar Aquisição", on_click = mqtt_pub("start"))
+
+while not received:
+    client.loop_start()
+    client.subscribe("AAIB/MP")
+client.loop_stop()
