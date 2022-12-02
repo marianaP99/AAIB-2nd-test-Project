@@ -28,7 +28,6 @@ def on_message(client, userdata, msg):
 def on_publish(client, userdata, mid):
     st.write('waiting for orter to start')
     
-
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
@@ -43,6 +42,8 @@ def mqtt_pub(ready):
 st.write("hang in there :')")
 
 button = st.button("Iniciar Aquisição", on_click = mqtt_pub("start"))
+button = st.button("Parar Aquisição", on_click = mqtt_pub("stop"))
+
 #st.write(button)
 
 while button:
