@@ -24,10 +24,11 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     st.write("receiving data")
     message = msg.payload.decode("utf-8")
-    
 
 def on_publish(client, userdata, mid):
     st.write('waiting for orter to start')
+    client.loop_start()
+    client.subscribe("AAIB/MP/SOUND")
 
 client = mqtt.Client()
 client.on_connect = on_connect
@@ -47,11 +48,6 @@ st.write(button)
 
 if button :  
     mqtt_pub("start")
-
-while button:   
-    client.loop_start()
-    client.subscribe("AAIB/MP/SOUND")
-    print(button)
 client.loop_stop()
 
 # my_bar = st.progress(0)
