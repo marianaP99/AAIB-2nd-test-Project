@@ -14,8 +14,6 @@ client.on_message = on_message
 
 client.connect("broker.hivemq.com", 1883)
 
-client.loop_forever()
-
 sound = client.subscribe("AAIB/MP")
 print(sound)
 
