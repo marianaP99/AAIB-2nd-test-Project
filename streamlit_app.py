@@ -11,7 +11,7 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     message = msg.payload.decode("utf-8")
-    print(msg.topic+" "+str(message))
+    st.write("receiving data")
     graphs()
 
 def on_publish(client, userdata, mid):

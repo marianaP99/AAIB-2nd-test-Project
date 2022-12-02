@@ -10,6 +10,10 @@ sd.default.samplerate = fs
 sd.default.channels = 2
 
 def record():
+    duration = 3  # seconds
+    fs = 44100
+    sd.default.samplerate = fs
+    sd.default.channels = 2
     myrecording = sd.rec(int(duration * fs))
     sd.wait()
     t = [n/fs for n in range(duration*fs)]
