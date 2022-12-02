@@ -6,7 +6,7 @@ import time
 import paho.mqtt.client as mqtt
 import json
 
-def graphs():
+def graphs(message):
     try:
         sound = json.loads(message)
         sonogram = sound[0]
@@ -16,7 +16,7 @@ def graphs():
         #st.write(features)
 
     except:
-        print("ups! something went worg :(")
+        st.write("ups! something went worg :(")
 
 def on_connect(client, userdata, flags, rc):
     print("Connected")
@@ -24,13 +24,13 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     st.write("receiving data")
     message = msg.payload.decode("utf-8")
-    graphs()
+    graphs(message)
 
 def on_publish(client, userdata, mid):
     st.write('waiting for orter to start')
 
 def on_subscribe(client, userdata, mid, granted_qos):
-     st.write('subscribed')
+    st.write('subscribed')
 
 client = mqtt.Client()
 client.on_connect = on_connect
