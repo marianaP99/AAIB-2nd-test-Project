@@ -18,7 +18,7 @@ client.connect("test.mosquitto.org", 1883)
 def mqtt_ready():
     return ready
 
-client.loop_start()
+client.loop_forever()
 
 sound = client.subscribe("AAIB/MP")
 print(sound)
